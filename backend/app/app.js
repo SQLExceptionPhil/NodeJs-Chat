@@ -17,8 +17,11 @@ mongoose.connect("SERVERIP", {
 });
 */
 app.use(bodyParser.json());
+
 //allow all GET request to /app/images/*.*
 app.use("/images", express.static(path.join("app/images")));
+//allow all GET requests to ../frontend/*.*
+app.use("/", express.static(path.join('../frontend/')));
 
 //only allow GET, PUT, POST, PATCH, DELETE, OPTIONS
 app.use((req, res, next) => {
@@ -33,4 +36,4 @@ app.use((req, res, next) => {
 app.use("/api/messages", messagesRoutes);
 
 
-modules.exports = app;
+module.exports = app;

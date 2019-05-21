@@ -4,4 +4,4 @@ const messageSchema = mongoose.Schema({
     //TODO: Think about a message schema
 });
 
-modules.exports = mongoose.model("Message", messageSchema);
+module.exports = mongoose.model("Message", messageSchema);
