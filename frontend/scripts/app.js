@@ -3,6 +3,12 @@ const allMessages = [];
 var author = "Phil";
 var channel = "Channel 3"; 
 
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        sendMessage();
+    }
+});
+
 const getData = () => {
     let url = "/api/messages";
     if(allMessages.length > 0) {
