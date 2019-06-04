@@ -11,14 +11,10 @@ Message.find({}, (err, message) => {
 
 router.get('', (req, res, next) => {
     let now = new Date();
-    let pos = [...messages].map(e => e._id)
-    console.log(req.query.id);
-    console.log(pos);
-    console.log(pos.indexOf(req.query.id));
+    let pos = [...messages].map(e => e._id + "").indexOf(req.query.id + "") + 1
     if(pos === -1)
         pos = 0;
     let result = [...messages].splice(pos);
-    console.log(result);
     res.json(result);
 });
 
