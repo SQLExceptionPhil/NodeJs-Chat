@@ -9,6 +9,9 @@ const apiManager = (message, callback) => {
         msg = msg.slice(1);
         let splitted = msg.split(" ");
         switch(splitted[0]) {
+            case 'help':
+                callback('Commands: <br>?love <name> - Zu wie viel Prozent passt du zu deiner Liebe <br> ')
+                break;
             case 'love':
                 love.getLove(author, splitted[1], (percentage) => {
                     if(percentage != undefined)
