@@ -3,11 +3,7 @@ const allMessages = [];
 var author = "Phil";
 var channel = "Channel 3"; 
 
-$(document).on('keypress',function(e) {
-    if(e.which == 13) {
-        sendMessage();
-    }
-});
+
 
 const getData = () => {
     let url = "/api/messages";
@@ -43,12 +39,17 @@ const appendMessage = (data) => {
 
 const sendMessage = () => {
     let content = $('#content').val();
-    if(!content)
+    if(!content || !content.trim())
         return;
     $.post("/api/messages", {content, author, channel}).done((data) => {
         $('#content').val('');
         appendMessage(data.sendMsg);
     });
 }
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        sendMessage();
+    }
+});
 
 setInterval(getData, 1000);
