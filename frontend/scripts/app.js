@@ -1,6 +1,6 @@
 const allMessages = [];
 
-var author = "Phil";
+var author = "";
 var channel = "Channel 3"; 
 
 
@@ -46,6 +46,15 @@ const sendMessage = () => {
         appendMessage(data.sendMsg);
     });
 }
+
+author = Cookies.get('author');
+
+while(!author || !author.trim()) {
+    author = prompt('Dein Username:');
+}
+
+Cookies.set('author', author, {expires: 1});
+
 $(document).on('keypress',function(e) {
     if(e.which == 13) {
         sendMessage();
