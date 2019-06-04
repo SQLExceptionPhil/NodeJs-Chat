@@ -6,8 +6,8 @@ const messagesRoutes = require('./routes/messages');
 
 const app = express();
 //TODO: create mongodb
-/*
-mongoose.connect("SERVERIP", {
+
+mongoose.connect("mongodb://localhost:27017/NVS", {
   useNewUrlParser: true
 }).then(() => {
   console.log("Connected to database!");
@@ -15,7 +15,8 @@ mongoose.connect("SERVERIP", {
   console.log("Connection failed!");
   console.error(err);
 });
-*/
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //allow all GET request to /app/images/*.*
