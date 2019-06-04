@@ -3,14 +3,23 @@ const router = express.Router();
 
 const Message = require('../models/message');
 
-//TODO: define routes
 const messages = [];
+
+Message.find({}, (err, message) => {
+    messages.push(...message);
+});
 
 router.get('', (req, res, next) => {
     let now = new Date();
-    let time_string = `${now.getDate()}-${now.getMonth()}-${now.getFullYear()} | ${now.getHours()}:${now.getMinutes()}`;
-    
-    res.json(JSON.stringify({id: '1234', content: 'Hallo Welt!', author: "Philipp", time: time_string}));
+    let pos = [...messages].map(e => e._id)
+    console.log(req.query.id);
+    console.log(pos);
+    console.log(pos.indexOf(req.query.id));
+    if(pos === -1)
+        pos = 0;
+    let result = [...messages].splice(pos);
+    console.log(result);
+    res.json(result);
 });
 
 router.post('', (req, res, next) => {
