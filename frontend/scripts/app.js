@@ -4,14 +4,22 @@ var author = "Phil";
 var channel = "Channel 3"; 
 
 const getData = () => {
-    $.getJSON("/api/messages", (data) => {
-            let message = JSON.parse(data);
-            if(allMessages.filter(m => m._id === message._id).length > 0)
-                return;
-            appendMessage(message);
-        }
-    );
+    let url = "/api/messages";
+    if(allMessages.length > 0) {
+        url += `?id=${allMessages[allMessages.length - 1]._id}`;
+    }
+    $.getJSON(url).done((message) => {
+        if(allMessages.filter(m => m._id === message._id).length > 0)
+            return;
+        appendMessages(message);
+    });
 };
+
+const appendMessages = (data) => {
+    data.forEach(e => {
+        appendMessage(e);
+    });
+}
 
 const appendMessage = (data) => {
     allMessages.push(data);
@@ -29,11 +37,12 @@ const appendMessage = (data) => {
 
 const sendMessage = () => {
     let content = $('#content').val();
-    
+    if(!content)
+        return;
     $.post("/api/messages", {content, author, channel}).done((data) => {
         $('#content').val('');
         appendMessage(data.sendMsg);
     });
 }
 
-//setInterval(getData, 500);
+setInterval(getData, 1000);
