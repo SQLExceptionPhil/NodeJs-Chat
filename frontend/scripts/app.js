@@ -26,11 +26,13 @@ const appendMessages = (data) => {
 const appendMessage = (data) => {
     allMessages.push(data);
     let messages = $('.messages');
+    let date = new Date(data.time + "");
+    let dateString = date.toLocaleString("de-AT", {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
     messages.append(`
     <div class="message">
         <div class="author">${data.author}</div>
         <div class="content">${data.content}</div>
-        <div clSERVERIPass="time">${data.time}</div>
+        <div class="time">${dateString}</div>
     </div>
     `);
     //scrolls to bottom of messages

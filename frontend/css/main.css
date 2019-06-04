@@ -88,6 +88,7 @@ main {
 }
 .message .time {
     display: inline-block;
+    padding-left: 10px;
 }
 
 footer {
