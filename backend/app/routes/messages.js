@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Message = require('../models/message');
+const {apiManager} = require('../api/api-manager');
 
 const messages = [];
 
@@ -27,6 +28,16 @@ router.post('', (req, res, next) => {
     });
     message.save().then(result => {
         messages.push(result);
+        apiManager(result, (resultContent) => {
+            console.log(resultContent)
+            const apiMessage = new Message({
+                content: resultContent,
+                author: 'System',
+                channel: req.body.channel,
+                time: new Date()
+            });
+            apiMessage.save().then(result => messages.push(result));
+        });
         res.status(200).json({
             message: "Message sent successfully",
             sendMsg: {
