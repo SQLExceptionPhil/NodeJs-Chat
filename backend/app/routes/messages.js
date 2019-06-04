@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const htmlspecialchars = require('htmlspecialchars');
+
 const Message = require('../models/message');
 const {apiManager} = require('../api/api-manager');
 
@@ -21,7 +23,7 @@ router.get('', (req, res, next) => {
 
 router.post('', (req, res, next) => {
     const message = new Message({
-        content: req.body.content,
+        content: htmlspecialchars(req.body.content),
         author: req.body.author,
         channel: req.body.channel,
         time: new Date()
