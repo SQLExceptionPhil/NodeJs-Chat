@@ -31,7 +31,6 @@ router.post('', (req, res, next) => {
     message.save().then(result => {
         messages.push(result);
         apiManager(result, (resultContent) => {
-            console.log(resultContent)
             const apiMessage = new Message({
                 content: resultContent,
                 author: 'System',
