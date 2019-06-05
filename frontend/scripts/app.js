@@ -4,6 +4,10 @@ const groups = [];
 var author = "";
 var currentGroup = ""; 
 
+var notification = new Howl({
+    src: ['../sounds/notification.mp3']
+});
+
 const addGroup = () => {
     let groupName = '';
     groupName = prompt('Name der neuen Gruppe');
@@ -54,6 +58,7 @@ const getData = () => {
 const appendMessages = (data) => {
     data.forEach(e => {
         appendMessage(e);
+        notification.play();
     });
 }
 
