@@ -24,6 +24,7 @@ const appendGroup = (data) => {
 const changeGroup = (id) => {
     $('li.group-active').toggleClass('group-active');
     $(`li#${id}`).toggleClass('group-active');
+    $('.message').remove();
     currentGroup = id;
 };
 
@@ -71,6 +72,10 @@ const appendMessage = (data) => {
     //scrolls to bottom of messages
    messages.scrollTop(messages.prop("scrollHeight"));
 }
+
+const clearMessages = () => {
+    $('.message').remove();
+};
 
 const sendMessage = () => {
     if(!currentGroup || !currentGroup.trim())
