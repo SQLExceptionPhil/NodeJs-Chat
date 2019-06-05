@@ -22,7 +22,10 @@ body-parser -> um die Daten die über POST gesendet werden direkt als object zu 
 express -> um routen zu definieren <br>
 htmlspecialchars -> um xss zu verhindern <br>
 mongoose -> um mich zur MongoDB zu verbinden & die Daten darauf zu verwalten<br>
-unirest -> um Anfragen an die REST-Apis zu senden
+unirest -> um Anfragen an die REST-Apis zu senden <br><br>
+
+jQuery -> um dynamisch die Webseite zu verändern & für REST Zugriffe auf den Server <br>
+cookie.js -> um Cookies einfacher zu verwalten: https://github.com/js-cookie/js-cookie
 <br><br>
 Was muss man installiert haben, um das Projekt zu testen?
 <br>
@@ -52,6 +55,7 @@ Verwendete Technologien:
 .) Express <br>
 .) MongoDB <br>
 .) jQuery <br>
+.) cookie.js <br>
 .) HTML <br>
 .) CSS
 <br><br>
