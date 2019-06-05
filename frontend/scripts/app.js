@@ -1,4 +1,4 @@
-const allMessages = [];
+var allMessages = [];
 const groups = [];
 
 var author = "";
@@ -24,7 +24,7 @@ const appendGroup = (data) => {
 const changeGroup = (id) => {
     $('li.group-active').toggleClass('group-active');
     $(`li#${id}`).toggleClass('group-active');
-    $('div.message').remove();
+    clearMessages();
     currentGroup = id;
 };
 
@@ -74,8 +74,8 @@ const appendMessage = (data) => {
 }
 
 const clearMessages = () => {
-    $('.message').remove();
-    messages = [];
+    allMessages = [];
+    $('div.message').remove();
 };
 
 const sendMessage = () => {
