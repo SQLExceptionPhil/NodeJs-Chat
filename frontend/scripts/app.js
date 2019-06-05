@@ -24,7 +24,7 @@ const appendGroup = (data) => {
 const changeGroup = (id) => {
     $('li.group-active').toggleClass('group-active');
     $(`li#${id}`).toggleClass('group-active');
-    $('.message').remove();
+    $('div.message').remove();
     currentGroup = id;
 };
 
