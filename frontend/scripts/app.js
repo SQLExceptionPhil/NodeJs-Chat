@@ -75,6 +75,7 @@ const appendMessage = (data) => {
 
 const clearMessages = () => {
     $('.message').remove();
+    messages = [];
 };
 
 const sendMessage = () => {
