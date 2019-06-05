@@ -54,9 +54,9 @@ Mit node client.js startet man den Client (zu beachten ist, dass man davor npm i
 Was sollte man im Client sehen? (Wie ist er zu bedienen)
 <br>
 Folgende Funktionalitäten sind eingebaut: <br>
-.) node client.js send --content=<Nachricht> --group=<GruppenID> --author=<Name> => hiermit sendet man eine Nachricht und es wird die Nachricht und eine success message in der Console angezeigt <br>
-.) node client.js listMessages --group=<GruppenID> => Hiermit lässt man sich alle Nachrichten anzeigen, die in einer Gruppe gesendet wurden <br>
-.) node client.js addGroup --name=<GruppenName> => liefert die Gruppen-ID und den Gruppennamen zurück, noch dazu eine success message <br>
+.) node client.js send --content=[Nachricht] --group=[GruppenID] --author=[Name] => hiermit sendet man eine Nachricht und es wird die Nachricht und eine success message in der Console angezeigt <br>
+.) node client.js listMessages --group=[GruppenID] => Hiermit lässt man sich alle Nachrichten anzeigen, die in einer Gruppe gesendet wurden <br>
+.) node client.js addGroup --name=[GruppenName] => liefert die Gruppen-ID und den Gruppennamen zurück, noch dazu eine success message <br>
 .) node client.js listGroups => hiermit kann man sich alle Gruppen anzeigen lassen<br><br>
 PS:<br>
 Wenn man die APIs benutzen möchte zuerst ?<love/urban> und dann warten und die Nachrichten anzeigen lassen. Der System Account wird eine Nachricht in die Gruppe schicken, in der die Nachricht gesendet wurde.
