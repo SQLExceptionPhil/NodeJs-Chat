@@ -1,7 +1,8 @@
 const request = require('request');
+const url = "http://localhost:3000/api/groups/";
 
 const getGroups = (callback) => {
-    const url = "http://localhost:3000/api/groups/";
+   
     request({url, json: true}, (error, {body}) => {
         if(error) {
             callback('Unable to connect to service.');
@@ -18,4 +19,21 @@ const getGroups = (callback) => {
     });
 };
 
-module.exports = {getGroups};
+const addGroup = (name, callback) => {
+    request.post(url, {
+        json: {
+            name
+        }
+    }, (error, res, body) => {
+        if(error) {
+            callback(error);
+            return;
+        }
+        callback(undefined, body);
+    })
+}
+
+module.exports = {
+    getGroups,
+    addGroup
+};

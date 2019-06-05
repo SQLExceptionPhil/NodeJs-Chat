@@ -33,7 +33,7 @@ const sendMessage = ({content, author, channel}, callback) => {
             callback(error);
             return;
         }
-        callback(body);
+        callback(undefined, body);
     });
 }
 

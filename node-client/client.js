@@ -26,11 +26,19 @@ var argv = yargs
 .command('listMessages', 'List all messages in a group', {
     group: groupOption
 })
+.command('addGroup', 'Add a group', {
+    name: {
+        describe: 'Name of the group',
+        demand: true,
+        alias: 'n'
+    }
+})
 .command('listGroups', 'List all Group names with id').argv;
 
 let group = argv.group;
 let content = argv.content;
 let author = argv.author;
+let name = argv.name;
 
 switch(argv._[0]) {
     case 'send':
@@ -50,6 +58,15 @@ switch(argv._[0]) {
             }
             console.log(messages);
         });
+        break;
+    case 'addGroup':
+        groups.addGroup(name, (err, body) => {
+            if(err){
+                console.log(err);
+                return;
+            }
+            console.log(body);
+        })
         break;
     case 'listGroups':
         groups.getGroups((err, groups) => {
