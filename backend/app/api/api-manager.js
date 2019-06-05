@@ -4,7 +4,6 @@ const trump = require('./trump');
 const norris = require('./norris');
 
 const apiManager = (message, callback) => {
-    console.log(message);
     let msg = message.content;
     let author = message.author;
     if(msg.startsWith("?"))
