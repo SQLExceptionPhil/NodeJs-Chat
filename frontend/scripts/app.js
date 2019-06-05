@@ -1,14 +1,41 @@
 const allMessages = [];
+const groups = [];
 
 var author = "";
-var channel = "Channel 3"; 
+var currentGroup = ""; 
 
+const addGroup = () => {
+    let groupName = '';
+    groupName = prompt('Name der neuen Gruppe');
+    if(!groupName || !groupName.trim()) 
+        return;
+    $.post('./api/groups', {name: groupName}).done(data => {
+        appendGroup(data.group);
+    });
+};
 
+const appendGroup = (data) => {
+    groups.push(data);
+    $('#add_group').before(`
+    <li onclick="changeGroup('${data._id}')">${data.name}</li>
+    `);
+}
+
+const getGroups = () => {
+    $.getJSON('/api/groups').done(data => {
+        data.forEach(e => {
+            appendGroup(e);
+        });
+    });
+};
 
 const getData = () => {
-    let url = "/api/messages";
+    if(!currentGroup || !currentGroup.trim())
+        return;
+
+    let url = `/api/messages?group=${currentGroup}`;
     if(allMessages.length > 0) {
-        url += `?id=${allMessages[allMessages.length - 1]._id}`;
+        url += `&id=${allMessages[allMessages.length - 1]._id}`;
     }
     $.getJSON(url).done((message) => {
         if(allMessages.filter(m => m._id === message._id).length > 0)
@@ -64,3 +91,7 @@ $(document).on('keypress',function(e) {
 });
 
 setInterval(getData, 1000);
+
+$(document).ready(() => {
+    getGroups();
+});

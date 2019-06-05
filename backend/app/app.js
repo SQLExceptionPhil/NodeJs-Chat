@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const messagesRoutes = require('./routes/messages');
+const groupsRoutes = require('./routes/groups');
 
 const app = express();
 //TODO: create mongodb
@@ -35,6 +36,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/messages", messagesRoutes);
-
+app.use('/api/groups', groupsRoutes);
 
 module.exports = app;

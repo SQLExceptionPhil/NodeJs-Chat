@@ -133,3 +133,6 @@ footer {
     font-size: 15px;
 }
 
+#add_group:hover {
+    background-color: #A4DE02;
+}
