@@ -1,5 +1,7 @@
 const love = require('./love');
 const urbandict = require('./urbandict');
+const trump = require('./trump');
+const norris = require('./norris');
 
 const apiManager = (message, callback) => {
     console.log(message);
@@ -30,9 +32,15 @@ const apiManager = (message, callback) => {
                         callback(`Für ${word} finde ich nichts :(`);
                 });
                 break;
+            case 'trump':
+                trump.trumpQuote(quote => callback(quote));
+                break;
+            case 'norris':
+                norris.getJoke(joke => callback(joke));
+                break;
             default:
             case 'help':
-                    callback('Commands: <br>?love [name] - Zu wie viel Prozent passt du zu deiner Liebe <br>?urban [term] - Zeigt dir die Definition eines Worts')
+                    callback('Commands: <br>?love [name] - Zu wie viel Prozent passt du zu deiner Liebe <br>?urban [term] - Zeigt dir die Definition eines Worts<br>?norris - Zeigt dir einen "lustigen" Chuck Norris Witz<br>?trump - Zeigt dir ein Donald Trump Zitat')
                     break;
         }
     }
