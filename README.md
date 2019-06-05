@@ -28,7 +28,8 @@ mongoose -> um mich zur MongoDB zu verbinden & die Daten darauf zu verwalten<br>
 unirest -> um Anfragen an die REST-Apis zu senden <br><br>
 
 jQuery -> um dynamisch die Webseite zu verändern & für REST Zugriffe auf den Server <br>
-cookie.js -> um Cookies einfacher zu verwalten: https://github.com/js-cookie/js-cookie<br><br>
+cookie.js -> um Cookies einfacher zu verwalten: https://github.com/js-cookie/js-cookie<br>
+howler.js -> um einen Notification Sound abzuspielen, wenn eine Nachricht kommt https://github.com/goldfire/howler.js<br><br>
 
 request -> um im Node-Client post/get request zum Server zu senden
 <br><br>
@@ -47,11 +48,11 @@ Wie startet man den Server (was muss alles laufen & wie startet man es)?
 PS:<br>
 Es besteht die Möglichkeit das Programm auf http://phmann.tk:3000 anzusehen
 <br><br>
-Wie startet man den Client? (Parameter, etc.)
+Wie startet man den Client?
 <br>
 Mit node client.js startet man den Client (zu beachten ist, dass man davor npm install eingeben muss)
 <br><br>
-Was sollte man im Client sehen? (Wie ist er zu bedienen)
+Was sollte man im Client sehen?
 <br>
 Folgende Funktionalitäten sind eingebaut: <br>
 .) node client.js send --content=[Nachricht] --group=[GruppenID] --author=[Name] => hiermit sendet man eine Nachricht und es wird die Nachricht und eine success message in der Console angezeigt <br>
@@ -67,6 +68,7 @@ Verwendete Technologien:
 .) MongoDB <br>
 .) jQuery <br>
 .) cookie.js <br>
+.) howler.js <br>
 .) HTML <br>
 .) CSS
 <br><br>
