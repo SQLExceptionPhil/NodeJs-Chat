@@ -13,11 +13,11 @@ Message.find({}, (err, message) => {
 });
 
 router.get('', (req, res, next) => {
-    let now = new Date();
-    let pos = [...messages].map(e => e._id + "").indexOf(req.query.id + "") + 1
+    let msgs = [...messages].filter(e => e.channel === req.query.group + '');
+    let pos = [...msgs].map(e => e._id + "").indexOf(req.query.id + "") + 1
     if(pos === -1)
         pos = 0;
-    let result = [...messages].splice(pos);
+    let result = [...msgs].splice(pos);
     res.json(result);
 });
 

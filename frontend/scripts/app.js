@@ -73,10 +73,15 @@ const appendMessage = (data) => {
 }
 
 const sendMessage = () => {
+    if(!currentGroup || !currentGroup.trim())
+    {
+        alert('Bitte gehe zuerst in eine Gruppe!');
+        return;
+    }
     let content = $('#content').val();
     if(!content || !content.trim())
         return;
-    $.post("/api/messages", {content, author, channel}).done((data) => {
+    $.post("/api/messages", {content, author, channel: currentGroup}).done((data) => {
         $('#content').val('');
         appendMessage(data.sendMsg);
     });
