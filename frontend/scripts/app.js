@@ -17,9 +17,15 @@ const addGroup = () => {
 const appendGroup = (data) => {
     groups.push(data);
     $('#add_group').before(`
-    <li onclick="changeGroup('${data._id}')">${data.name}</li>
+    <li id="${data._id}" onclick="changeGroup('${data._id}')">${data.name}</li>
     `);
 }
+
+const changeGroup = (id) => {
+    $('li.group-active').toggleClass('group-active');
+    $(`li#${id}`).toggleClass('group-active');
+    currentGroup = id;
+};
 
 const getGroups = () => {
     $.getJSON('/api/groups').done(data => {
