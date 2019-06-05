@@ -9,28 +9,31 @@ const apiManager = (message, callback) => {
     {
         msg = msg.slice(1);
         let splitted = msg.split(" ");
+        let word = splitted.splice(1).join(" ");
         switch(splitted[0]) {
-            case 'help':
-                callback('Commands: <br>?love [name] - Zu wie viel Prozent passt du zu deiner Liebe <br>?urban [term] - Zeigt dir die Definition eines Worts')
-                break;
+            
             case 'love':
-                love.getLove(author, splitted[1], (percentage) => {
+                love.getLove(author, word, (percentage) => {
                     if(percentage != undefined)
-                        callback(`${author} deine Chancen ${splitted[1]} zu bekommen liegen bei ${percentage}%`);
+                        callback(`${author} deine Chancen ${word} zu bekommen liegen bei ${percentage}%`);
                     else
                         callback(`${author} es gab einen Fehler beim Aufruf der Love-API! - Probiers bald nochmal!`);
                 });
                 
                 break;
             case 'urban':
-                urbandict.getDefinition(splitted[1], (definition) => {
+                
+                urbandict.getDefinition(word, (definition) => {
                     if(definition != undefined)
-                        callback(`${splitted[1]}: ${definition}`);
+                        callback(`${word}: ${definition}`);
                     else
-                        callback(`Für ${splitted[1]} finde ich nichts :(`);
+                        callback(`Für ${word} finde ich nichts :(`);
                 });
                 break;
-            
+            default:
+            case 'help':
+                    callback('Commands: <br>?love [name] - Zu wie viel Prozent passt du zu deiner Liebe <br>?urban [term] - Zeigt dir die Definition eines Worts')
+                    break;
         }
     }
 }
