@@ -31,7 +31,8 @@ jQuery -> um dynamisch die Webseite zu verändern & für REST Zugriffe auf den S
 cookie.js -> um Cookies einfacher zu verwalten: https://github.com/js-cookie/js-cookie<br>
 howler.js -> um einen Notification Sound abzuspielen, wenn eine Nachricht kommt https://github.com/goldfire/howler.js<br><br>
 
-request -> um im Node-Client post/get request zum Server zu senden
+request -> um im Node-Client post/get request zum Server zu senden <br>
+yargs -> für Parameter im Node-Client
 <br><br>
 Was muss man installiert haben, um das Projekt zu testen?
 <br>
